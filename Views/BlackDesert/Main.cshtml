@@ -1,0 +1,10 @@
+﻿@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<article class="sections">
+    @foreach(var item in Model){
+        @Html.Raw(item.CodeHtml)
+    }
+</article>

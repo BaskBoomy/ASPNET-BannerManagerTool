@@ -1,0 +1,66 @@
+﻿@model WebToolManager.Models.TemplateInfo
+<link rel="stylesheet" href="~/css/edittemplatedesign.css" />
+@*<script src="~/js/resizebox.js"></script>*@
+<script>
+    function resizeIframe(obj) {
+        obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+    }
+
+    function showPreview(){
+        var htmlCode = document.getElementById("htmlCode").value;
+        var cssCode ="<style>"+ document.getElementById("cssCode").value+"</style>";
+        var jsCode ="<scri"+"pt>"+ document.getElementById("jsCode").value+"</scri"+"pt>";
+        var frame = document.getElementById("preview-window").contentWindow.document;
+        frame.open();
+        frame.write(htmlCode+cssCode+jsCode);
+        frame.close();
+    }
+    $(document).ready(function() {
+        showPreview();
+    });
+
+    
+    $(function () {
+        $('#updateTemplate').click(function () {
+                $.ajax({
+                    data: $("#utForm").serialize(),
+                    type: 'POST',
+                    url: '/Home/UpdateTemplate',
+                    success: function(data) {
+                        alert("템플릿 데이터 변경 성공!");
+                        window.location.href="/Home/Section";
+                    },
+                    error:function(request,status,error){
+                        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                    }
+                });
+        });
+    });
+    
+    
+
+</script>
+@*<div class="row">
+    <div id="preview-box" class="col-sm border border-secondary">
+    <h4>PREVIEW</h4>
+    <iframe id="previewFrame" frameborder="0" onload="resizeIframe(this)" src="/Preview/Index/@Model.Id" class="preview-iframe"></iframe>
+    </div>
+    </div>*@
+    @using (Html.BeginForm("UpdateTemplate", "Home", FormMethod.Post, new { @style = "width:100%;", @id="utForm" }))
+{
+    <div class="code-body">
+        <div class="preview-area">
+            <iframe id="preview-window" onload="resizeIframe(this)"></iframe>
+        </div>
+        <div class="code-area">
+            @Html.HiddenFor(Model=>Model.Id)
+            @Html.TextAreaFor(Model => Model.CodeHtml , new{@id="htmlCode", @oninput="showPreview()"})
+            @Html.TextAreaFor(Model => Model.CodeCss , new{@id="cssCode", @oninput="showPreview()"})
+            @Html.TextAreaFor(Model => Model.CodeJs , new{@id="jsCode", @oninput="showPreview()"})
+            @*<textarea id="htmlCode" oninput="showPreview()">@Model.CodeHtml</textarea>
+                <textarea id="cssCode" oninput="showPreview()">@Model.CodeCss</textarea>
+                <textarea id="jsCode" oninput="showPreview()">@Model.CodeJs</textarea>*@
+        </div>
+        <button id="updateTemplate" type="button" class="btn btn-primary mt-1">저장</button>
+    </div>
+}

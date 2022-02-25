@@ -1,0 +1,53 @@
+﻿
+<script src="~/js/modal.js" asp-append-version="true"></script>
+<div id="PlaceHolderHere"></div>
+<!-- Modal-템플릿 선택 1-->
+<div class="modal" id="addBannerModal" tabindex="-1" aria-labelledby="addBannerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addBannerModalLabel">베너 추가</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="hideModal()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <section class="py-1">
+                    <div class="container px-1 px-lg-1 mt-1">
+                        <div class="row gx-1 gx-lg-1 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center">
+                            @foreach(var template in Model.TemplateInfo)
+                            {
+                                <div class="col m-1" style="width:30rem;">
+                                    <div class="card h-100">
+                                        <div class="col template-box">
+                                            @*<img src=@template.FrontImage class="rounded mx-auto d-block" alt="..." data-id="1">*@
+                                            <img src=@template.FrontImage class="rounded mx-auto d-block" data-toggle="ajax-modal" data-target="#selectTemplateModal" data-url="@Url.Action("TemplateData","Home",new{@templateId=@template.Id, @pageId=Model.PageId})"/>
+                                            @*@Url.Action($"TemplateData/{@template.Id}/{Model.PageId}")*@
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </section>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center" style="margin-top:20px;">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

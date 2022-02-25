@@ -1,0 +1,300 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ASPNETProject</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/blackdesert.css" />
+    <link rel="stylesheet" href="~/css/template.css" />
+</head>
+<body>
+    <header class="header_wrap">
+        <nav>
+            <div class="logo">
+                <a>
+                    <img src="https://s1.pearlcdn.com/KR/contents/img/common/logo_bdo_kr.svg">
+                </a>
+            </div>
+            <div class="wrapper">
+                <input type="radio" name="slide" id="menu-btn" />
+                <input type="radio" name="slide" id="cancel-btn" />
+                <label for="cancel-btn" class="btn cancel-btn cancel1"><i class="fas fa-times"></i></label>
+                <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+                <ul class="nav-links">
+                    <label for="menu-btn" class="btn menu-btn menu2"><i class="fas fa-bars"></i></label>
+                    <label for="cancel-btn" class="btn cancel-btn cancel2"><i class="fas fa-times"></i></label>
+                    <a href="https://www.kr.playblackdesert.com/main/index" class="btn_mob_logo bdo_kr">
+                        <img src="https://s1.pearlcdn.com/KR/contents/img/common/logo_bdo_kr.svg" alt="검은사막 리마스터" data-cookieconsent="ignore">
+                    </a>
+                    <li>
+                        <a href="#" class="dropdownMenu">새소식</a>
+                        <input type="checkbox" id="showNotice" />
+                        <label for="showNotice" class="mobile-item">새소식</label>
+                        <div class="mega-box">
+                            <div class="content">
+                                <div class="row">
+                                    <ul class="mega-links">
+                                        <li><a href="#">공지사항</a></li>
+                                        <li><a href="#">업데이트</a></li>
+                                        <li><a href="#">이벤트</a></li>
+                                        <li><a href="#">GM노트</a></li>
+                                        <li><a href="#">펄 상점</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdownMenu">게임소개</a>
+                        <input type="checkbox" id="showGameIntro" />
+                        <label for="showGameIntro" class="mobile-item">게임소개</label>
+                        <div class="mega-box">
+                            <div class="content">
+                                <div class="row sub-row">
+                                    <ul class="mega-links">
+                                        <li><a href="#">게임특징</a></li>
+                                        <li><a href="#">클래스 소개</a></li>
+                                        <li><a href="#">모함가 가이드</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdownMenu">모험가 캠프</a>
+                        <input type="checkbox" id="showAdventureCamp" />
+                        <label for="showAdventureCamp" class="mobile-item">모험가 캠프</label>
+                        <div class="mega-box">
+                            <div class="content">
+                                <div class="row sub-row">
+                                    <ul class="mega-links">
+                                        <li><a href="#">모험가 친구</a></li>
+                                        <li><a href="#">길드 찾기</a></li>
+                                        <li><a href="#">뷰티앨범</a></li>
+                                        <li><a href="#">포토갤러리</a></li>
+                                        <li><a href="#">업데이트 히스토리</a></li>
+                                        <li><a href="#">검은사막TV</a></li>
+                                        <li><a href="#">통합거래소</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdownMenu">상점</a>
+                        <input type="checkbox" id="showMarket" />
+                        <label for="showMarket" class="mobile-item">상점</label>
+                        <div class="mega-box">
+                            <div class="content">
+                                <div class="row sub-row">
+                                    <ul class="mega-links sub-menu-shop">
+                                        <li><a href="#">ACOIN 충전</a></li>
+                                        <li><a href="#">쿠폰사용</a></li>
+                                        <li><a href="#">펄 상자 구매</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdownMenu">커뮤니티</a>
+                        <input type="checkbox" id="showCommunity" />
+                        <label for="showCommunity" class="mobile-item">커뮤니티</label>
+                        <div class="mega-box">
+                            <div class="content">
+                                <div class="row sub-row">
+                                    <ul class="mega-links">
+                                        <li><a href="#">전체글보기</a></li>
+                                        <li><a href="#">팁&공략</a></li>
+                                        <li><a href="#">캐릭터 공략</a></li>
+                                        <li><a href="#">캐릭터 토론</a></li>
+                                        <li><a href="#">자유게시판</a></li>
+                                        <li><a href="#">건의게시판</a></li>
+                                        <li><a href="#">피드백 게시판</a></li>
+                                        <li><a href="#">스크린샷/영상</a></li>
+                                        <li><a href="#">펜 아트</a></li>
+                                        <li><a href="#">길드 & 친구 찾기</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdownMenu">다운로드</a>
+                        <input type="checkbox" id="showDownload" />
+                        <label for="showDownload" class="mobile-item">다운로드</label>
+                        <div class="mega-box">
+                            <div class="content">
+                                <div class="row sub-row">
+                                    <ul class="mega-links">
+                                        <li><a href="#">클라이언트</a></li>
+                                        <li><a href="#">영상</a></li>
+                                        <li><a href="#">웹페이퍼</a></li>
+                                        <li><a href="#">OST</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdownMenu">고객센터</a>
+                        <input type="checkbox" id="showService" />
+                        <label for="showService" class="mobile-item">고객센터</label>
+                        <div class="mega-box">
+                            <div class="content">
+                                <div class="row sub-row">
+                                    <ul class="mega-links">
+                                        <li><a href="#">FAQ</a></li>
+                                        <li><a href="#">신고센터</a></li>
+                                        <li><a href="#">보안센터</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <div class="util_mobile_wrap">
+                        <ul class="">
+                            <li>
+                                <a href="#" title="회원가입" class="btn_join">
+                                    회원가입
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="로그인" class="btn_login">
+                                    로그인
+                                </a>
+                            </li>
+                        </ul>
+                        <a href="# " class="btnTopSide" data-ga="/gameplay/buttonclick">게임 시작</a>
+                        <p class="mob_copyright">© Pearl Abyss Corp. All Rights Reserved.</p>
+                    </div>
+                </ul>
+            </div>
+            <div class="util_desktop_wrap">
+                <ul class="">
+                    <li>
+                        <a href="#" title="회원가입" class="btn_join">
+                            회원가입
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" title="로그인" class="btn_login">
+                            로그인
+                        </a>
+                    </li>
+                </ul>
+                <a href="# " class="btnTopSide" data-ga="/gameplay/buttonclick">게임 시작</a>
+                <p class="mob_copyright">© Pearl Abyss Corp. All Rights Reserved.</p>
+            </div>
+        </nav>
+    </header>
+    <div class="container_main">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+        <footer class="border-top footer text-muted footer_wrap">
+            <div class="sns_area">
+                <a href="https://www.facebook.com/BlackDesertKR" target="_blank" class="btn_sns btn_facebook">Facebook</a>
+                <a href="https://www.youtube.com/channel/UCEExGXSozNsReY3i3s4yhhQ" target="_blank" class="btn_sns btn_youtube">Youtube</a>
+                <a href="https://www.twitch.tv/blackdesertkr" target="_blank" class="btn_sns btn_twitch">Twitch</a>
+                <a href="https://app.adjust.com/oi3unbk" target="_blank" class="btn_sns btn_pearlapp">WEB_CONTENTS_PEARLAPP</a>
+                <a href="https://www.instagram.com/blackdesert.kr" target="_blank" class="btn_sns btn_instagram">Instagram</a>
+            </div>
+            <div class="inner_footer">
+                <div class="term_list">
+                    <a href="https://www.kr.playblackdesert.com/Policy/policy/index/?policyNo=10">
+                        서비스 이용약관
+                    </a>
+                    <a href="https://www.kr.playblackdesert.com/Policy/policy/index/?policyNo=11">
+                        <strong>
+                            개인정보처리방침
+                        </strong>
+                    </a>
+                    <a href="https://www.kr.playblackdesert.com/Policy/policy/index/?policyNo=14">
+                        검은사막 운영정책
+                    </a>
+                    <a href="https://www.kr.playblackdesert.com/Policy/policy/index/?policyNo=12">
+                        청소년 보호 정책
+                    </a>
+                    <a href="https://www.kr.playblackdesert.com/Policy/policy/index/?policyNo=13">
+                        이벤트 규약
+                    </a>
+                    <a href="https://www.kr.playblackdesert.com/Policy/policy/index/?policyNo=24">
+                        팬 콘텐츠 가이드
+                    </a>
+
+                    <a href="https://kr.pearlabyss.com/Support/Start" target="_blank" onclick="">고객센터</a>
+
+                </div>
+                <address>
+                    <span>㈜펄어비스</span>
+                    <span>대표이사: 정경인</span>
+                    <span class="mob_block">경기도 안양시 동안구 시민대로327번길 24 (관양동, 펄어비스)</span>
+                </address>
+                <address>
+                    <span>사업자등록번호 : 138-81-62479</span>
+                    <span>통신판매업 신고번호 : 2017-안양동안-0915</span>
+                    <span>
+                        <a href="http://www.ftc.go.kr/bizCommPop.do?wrkr_no=1388162479" target="_blank" onclick="window.open(this.href, 'http://www.ftc.go.kr/bizCommPop.do?wrkr_no=1388162479','width=740,height=920');return false;">
+                            사업자 정보 확인
+                        </a>
+                    </span>
+                </address>
+                <address>
+                    <span>대표번호: 1661-8572</span>
+                    <span>FAX : 031-935-0837</span>
+                    <span>E-mail : pc_kr@playblackdesert.com</span>
+                </address>
+                <div class="box_game_info">
+                    <div class="left_area">
+                        <ul>
+                            <li class="sensation"></li>
+                            <li class="violent"></li>
+                            <li class="grade"></li>
+                        </ul>
+                    </div>
+                    <div class="right_area">
+                        <ul>
+                            <li>제명</li>
+                            <li>검은사막</li>
+                            <li>상호</li>
+                            <li>㈜펄어비스</li>
+                            <li>이용등급</li>
+                            <li>청소년이용불가</li>
+                            <li>등급분류번호</li>
+                            <li>제CC-NP-140409-005호</li>
+                            <li>등급분류 일자</li>
+                            <li>2014년 4월 9일</li>
+                            <li>제작업 신고번호</li>
+                            <li>제2011-000002호</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="copyright kr">
+                    <div class="footer_item">
+                        <a href="javascript:void(0);" class="btn_country">
+                            검은사막 - <span class="current_country">한국</span>
+                        </a>
+                        <a href="https://www.pearlabyss.com" target="_blank" class="btn_pearlabyss"></a>
+                        <p>© Pearl Abyss Corp. All Rights Reserved.</p>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+
+
+

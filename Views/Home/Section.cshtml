@@ -1,0 +1,27 @@
+﻿<link rel="stylesheet" href="~/css/template.css" />
+<link rel="stylesheet" href="~/css/magnific-popup.css" />
+<script src="~/js/jquery.magnific-popup.min.js"></script>
+<script src="~/js/modal.js" asp-append-version="true"></script>
+
+<script>
+
+</script>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">템플릿</th>
+            <th scope="col">베너</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.Id</th>
+                <td><a href="/Home/EditTemplate/@item.Id">@item.Name</a></td>
+                <td>bannername</td>
+            </tr>
+        }
+    </tbody>
+</table>

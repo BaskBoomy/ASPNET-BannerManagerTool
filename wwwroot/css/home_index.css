@@ -1,0 +1,136 @@
+﻿.table-title {
+    display: inline-flex;
+    height: 1.5rem;
+}
+
+.card-title {
+    font-weight: bold;
+    margin-bottom:0px;
+}
+.banner-btn-link {
+    margin-bottom: 5px;
+    margin-left: 16px;
+}
+.add-banner {
+    padding: 0px;
+    width: 130px;
+    height: 30px;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+@media(min-width: 576px) {
+    .modal-dialog {
+        max-width: 70%;
+        margin: 1.75rem auto;
+    }
+}
+
+@media (min-width: 992px) {
+    .modal-lg, .modal-xl {
+        max-width: 70%;
+    }
+}
+
+.template-box {
+    background-color: #e0e0e0;
+    padding: 0px 0 0 0;
+}
+
+.template-box img {
+    width: 100%;
+    vertical-align: middle;
+}
+
+.detail-textarea {
+    width: 100%;
+    height: 120px;
+    border-radius: 5px;
+    padding:10px;
+}
+
+.input-group span {
+    width: 15%;
+}
+
+.preview-frame {
+    width: 100%;
+    height: 100%;
+    border: 1px solid;
+    padding: 10px;
+    text-align: center;
+}
+
+
+#sortable tr:hover{
+    background-color:#0094ff;
+    color:#fff;
+}
+
+hr{
+    margin:0.5rem 0;
+}
+
+details{
+    padding: 0 1rem;
+}
+
+details > summary {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    font-size: 1.25rem;
+    cursor: pointer;
+    list-style: none;
+    align-items: center;
+}
+
+details > summary::after{
+    content: url(/assets/right-arrow.png);
+    width:1.5rem;
+    height:1.5rem;
+    display:inline-flex;
+    transition: transform 0.3s ease;
+}
+
+details[open] > summary::after {
+    transform: rotate(90deg);
+}
+details > summary::-webkit-details-marker{
+    display:none;
+}
+    /*details[open] summary ~ * {
+        animation: fadeInDown;
+        animation-duration: 0.3s;
+    }*/
+details[open]  summary ~ * {
+    animation: sweep .5s ease-in-out;
+}
+@keyframes sweep {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+.details-content {
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem;
+    transition: 0.3s ease;
+}
+
+@media (min-width: 576px) {
+    .sortBanner {
+        max-width: 50%;
+    }
+}
+
+.edit_del_btn {
+    display: flex;
+    justify-content: right;
+}

@@ -1,0 +1,79 @@
+﻿@*@model IEnumerable<WebToolManager.Models.Post>*@
+<script src="~/lib/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+<script src="~/js/modal.js" asp-append-version="true"></script>
+<script>
+    $(document).ready(function(){
+        $("#sortable").sortable({
+            update:function(event,ui){
+                var itemIds = "";
+                $("#sortable").find(".taskSingleInline").each(function(){
+                    var itemId = $(this).attr("data-taskid");
+                    itemIds = itemIds+itemId+",";
+                });
+                $.ajax({
+                    url:'@Url.Action("UpdateItem","Home")',
+                    data:{itemIds:itemIds},
+                    type:'POST',
+                    success:function(data){
+
+                    },
+                    error:function(xhr,status,error){
+
+                    }
+                });
+            }
+        });
+    })
+</script>
+<div id="PlaceHolderHere"></div>
+<div class="modal" id="sortBanner" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable sortBanner">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">베너 순서 변경</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="hideModal()"></button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Position</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sortable" style="cursor:pointer;">
+                            @foreach (var item in Model.uploadedBannerList)
+                            {
+                                if (item.Id == Model.insertedId)
+                                {
+                                    <tr style="background-color:lightblue">
+                                        <td>@item.Id</td>
+                                        <td class="taskSingleInline" id="task@(item.Id)" data-taskid="@(item.Id)">@item.BannerName</td>
+                                        <td>@item.RowNo</td>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td>@item.Id</td>
+                                        <td class="taskSingleInline" id="task@(item.Id)" data-taskid="@(item.Id)">@item.BannerName</td>
+                                        <td>@item.RowNo</td>
+                                    </tr>
+                                }
+
+                            }
+                        </tbody>
+
+                    </table>
+                    @*<a class="btn btn-primary" href="@Url.Action("Index","Home")">Update Position</a>*@
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="hideModal()">Close</button>
+                <a type="button" class="btn btn-primary" href="@Url.Action("Index","Home")">Update Position</a>
+            </div>
+        </div>
+    </div>
+</div>

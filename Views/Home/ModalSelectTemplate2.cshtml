@@ -1,0 +1,128 @@
+﻿@model WebToolManager.ViewModel.TemplateDataViewModel
+<link rel="stylesheet" href="~/css/template.css" />
+<link rel="stylesheet" href="~/css/magnific-popup.css" />
+<script src="~/js/jquery.magnific-popup.min.js"></script>
+<script src="~/js/modal.js" asp-append-version="true"></script>
+<script>
+        $(document).ready(function () {
+        $('.gallerys').magnificPopup({
+            gallery: {
+                enabled: true
+            },
+            type: 'image',
+            delegate : 'a'
+        })
+    });
+</script>
+<div id="PlaceHolderHere"></div>
+<!-- Modal-템플릿 선택 2-->
+<div class="modal" id="selectTemplateModal" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">템플릿 선택</h5>
+                <h6>@Model.TemplateInfo.Name</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="hideModal()"></button>
+            </div>
+            @using (Html.BeginForm("TemplateData", "Home", FormMethod.Post, new { id = "templateForm",name="templateForm", onsubmit = "setHtmlValue()" }))
+            {
+                @Html.HiddenFor(Model=>Model.TemplateInfo.Id)
+                @Html.HiddenFor(Model=>Model.PageId)
+                @Html.TextBoxFor(Model=>Model.CodeHtml,new{@hidden="true"})
+                <div class="modal-body">
+                    <div class="card text-dark bg-light mb-3">
+                        <div class="card-header">Details</div>
+                        <div class="card-body">
+                            <textarea class="detail-textarea" readonly>@Model.TemplateInfo.Details</textarea>
+                        </div>
+                    </div>
+                    <div class="card text-dark bg-light mb-3">
+                        <div class="card-header">Info</div>
+                        <div class="card-body">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">BannerName</span>
+                                @Html.TextBoxFor(Model=>Model.BannerName, new{@class="form-control", @placeholder="베너 이름을 입력하세요.", aria_label="BannerName", aria_describedby="basic-addon1"})
+                                @*<input type="text" class="form-control" placeholder="베너 이름을 입력하세요." aria-label="BannerName" aria-describedby="basic-addon1">*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card text-dark bg-light mb-3">
+                        <div class="card-header">Data</div>
+                        <div class="card-body">
+                            @Html.HiddenFor(Model=>Model.flag)
+                            @*베너 추가할때*@
+                            @if(Model.flag == 1)
+                            {
+                                for (var idx = 0; idx < Model.DataLists.Count(); idx++)
+                                {
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1">@Model.DataLists[idx].label</span>
+                                        @Html.HiddenFor(Model=>Model.DataLists[idx].id)
+                                        @Html.HiddenFor(Model=>Model.DataLists[idx].type)
+                                        @Html.HiddenFor(Model=>Model.DataLists[idx].name)
+                                        @Html.HiddenFor(Model=>Model.DataLists[idx].label)
+                                        @Html.TextBoxFor(Model => Model.DataLists[idx].data, new {@class="form-control", @id="data-"+@Model.DataLists[idx].type+"-"+@Model.DataLists[idx].name, @placeholder=@Model.DataLists[idx].placeholder, aria_label=@Model.DataLists[idx].label, aria_describedby="basic-addon1"})
+                                    </div>
+                                }
+                            }
+                            @*베너 수정할때*@
+                            else
+                            {
+                                for (var idx = 0; idx < Model.BannerDataLists.Count(); idx++)
+                                {
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1">@Model.BannerDataLists[idx].Label</span>
+                                        @Html.HiddenFor(Model=>Model.BannerDataLists[idx].Id)
+                                        @Html.HiddenFor(Model=>Model.BannerDataLists[idx].BannerId)
+                                        @Html.HiddenFor(Model=>Model.BannerDataLists[idx].Type)
+                                        @Html.HiddenFor(Model=>Model.BannerDataLists[idx].Name)
+                                        @Html.HiddenFor(Model=>Model.BannerDataLists[idx].Label)
+                                        @Html.TextBoxFor(Model => Model.BannerDataLists[idx].Data, new {@class="form-control", @id="data-"+@Model.BannerDataLists[idx].Type+"-"+@Model.BannerDataLists[idx].Name, aria_label=@Model.BannerDataLists[idx].Label, aria_describedby="basic-addon1"})
+                                    </div>
+                                }
+                            }
+
+
+
+                            @*<form method="post" asp-controller="Home" asp-action="TemplateData">
+                                @foreach(var datas in Model.DataLists)
+                                {
+                                <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">@datas.label</span>
+                                <input type="text" name="data-@datas.type-@datas.name" id="data-@datas.type-@datas.name" class="form-control" placeholder="@datas.placeholder" aria-label="@datas.label" aria-describedby="basic-addon1">
+                                </div>
+                                }
+                                </form>*@
+                        </div>
+                    </div>
+                    <div class="card text-dark bg-light mb-3">
+                        <div class="card-header">Preview</div>
+                        <div class="card-body">
+                            <div class="preview-frame">
+                                @if(Model.flag == 1)
+                                {
+                                    @Html.Raw(Model.TemplateInfo.CodeHtml)
+                                }
+                                else
+                                {
+                                    @Html.Raw(Model.CodeHtml)
+                                }
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="hideModal()">닫기</button>
+                    @if(Model.flag == 1)
+                    {
+                        <input type="button" id="templateSubmit" onclick="tpSubmit()" class="btn btn-primary" value="저장">
+                    }else{
+                        <input type="button" id="templateSubmit" onclick="tpSubmit()" class="btn btn-primary" value="수정">
+                    }
+                    
+                </div>
+            }
+        </div>
+    </div>
+</div>
