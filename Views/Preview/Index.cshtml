@@ -3,42 +3,102 @@
 }
 <link rel="stylesheet" href="~/css/template.css" />
 <link rel="stylesheet" href="~/css/magnific-popup.css" />
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="~/lib/slick/slick.css" />
+<link rel="stylesheet" href="~/lib/slick/slick-theme.css" />
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/js/jquery.magnific-popup.min.js"></script>
+<script src="~/lib/slick/slick.min.js"></script>
 <script src="~/js/modal.js" asp-append-version="true"></script>
-@Html.Raw(Model.Code)
-
-@*<section class="multi_media_wrap">
-    <h3 id="maintitle">멀티미디어</h3>
-    <span class="h3_desc" id="subtitle">리마스터링으로 더욱 현실에 가까워진 검은사막의 영상, 월페이퍼 등<br>다양한 자료를 감상하거나 다운로드 받으실 수 있습니다.</span>
-    <div class="media_list_area">
-        <div class="inner gallerys">
-            <div class="thumb_movie">
-                <a id="youtube_link" href="https://www.youtube.com/watch?v=P-glVgwoKeo" target="_blank" class="view_movie mfp-iframe" data-url="https://www.youtube.com/embed/P-glVgwoKeo?rel=0" attr-type="video" attr-idx="0">
-                    <img id="image5_400" src="https://s1.pearlcdn.com/KR/Upload/thumbnail/2021/X2LTJ3IKDMNOLS2920211229091030566.923x522.png" class="img-fluid" alt="설산 지역, 끝없는 겨울의 산">
-                    <span id="thumbnail_text" class="title">설산 지역, 끝없는 겨울의 산</span>
-                </a>
-            </div>
-            <div class="thumb thumb_wrap">
-                <a id="image1_1300" href="https://s1.pearlcdn.com/KR/Upload/thumbnail/2022/0D6H7FSW6SA0SJFB20220105100300352.400x225.jpg" target="_blank" class="view_img" attr-type="image" attr-idx="1">
-                    <img id="image1_400" src="https://s1.pearlcdn.com/KR/Upload/thumbnail/2022/0D6H7FSW6SA0SJFB20220105100300352.400x225.jpg" class="img-fluid" alt=" ">
-                </a>
-            </div>
-            <div class="thumb thumb_wrap">
-                <a id="image2_1300" href="https://s1.pearlcdn.com/KR/Upload/thumbnail/2022/71BHI0AW6FHYA5GS20220105100247297.400x225.jpg" target="_blank" class="view_img" attr-type="image" attr-idx="2">
-                    <img id="image2_400" src="https://s1.pearlcdn.com/KR/Upload/thumbnail/2022/71BHI0AW6FHYA5GS20220105100247297.400x225.jpg" class="img-fluid" alt=" ">
-                </a>
-            </div>
-            <div class="thumb thumb_wrap">
-                <a id="image3_1300" href="https://s1.pearlcdn.com/KR/Upload/thumbnail/2022/ASOSR5B9NUKS2HWR20220105095951372.400x225.jpg" target="_blank" class="view_img" attr-type="image" attr-idx="3">
-                    <img id="image3_400" src="https://s1.pearlcdn.com/KR/Upload/thumbnail/2022/ASOSR5B9NUKS2HWR20220105095951372.400x225.jpg" class="img-fluid" alt=" ">
-                </a>
-            </div>
-            <div class="thumb thumb_wrap">
-                <a id="image4_1300" href="https://s1.pearlcdn.com/KR/Upload/thumbnail/2022/YC6V31IIX8YB797G20220105095746527.400x225.jpg" target="_blank" class="view_img" attr-type="image" attr-idx="4">
-                    <img id="image4_400" src="https://s1.pearlcdn.com/KR/Upload/thumbnail/2022/YC6V31IIX8YB797G20220105095746527.400x225.jpg" class="img-fluid" alt=" ">
-                </a>
-            </div>
+<script>
+    $(document).ready(function () {
+        $('.slider').slick({
+            prevArrow: $('.prev'),
+            nextArrow: $('.next')
+        });
+    });
+</script>
+<div class="banner-box">
+    <div class="title-box">
+        <div class="banner-title">베너 제목</div>
+        <div class="paginator">
+            <ul style="margin:0px;">
+                <li class="prev"></li>
+                <li class="next"></li>
+            </ul>
         </div>
     </div>
-</section>*@
+
+    <section class="slide-video">
+        <div class="clicked-video">
+            <a id="a_tip_vod" class="link_vod top_vod" href="javascript:void(0)" data-vid="ldu2NPSK7cE" event-order="6" event-description="윤루트의 엠포 상향 체험기">
+                <span class="thumb_wrap">
+                    <img id="img_tip_thumbnail" class="thumb_g" src="https://t1.kakaocdn.net/gamepub/pub-img/pubg/video_tip/video_tip_1645064956668_97.jpg" alt="">
+                </span>
+                <span class="title_vod">
+                    <span id="sp_tip_title" class="txt">윤루트의 엠포 상향 체험기</span>
+                   
+                </span>
+            </a>
+        </div>
+        <ul class="slide-video-list slider">
+            <li>
+                <ul class="list_battleVod slick-slide slick-active" data-slick-index="1" aria-hidden="false" style="width: 686px;">
+
+                    <li>
+                        <a name="a_vod_item" class="link_vod" href="javascript:void(0)" event-category="영상팁" event-name="영상팁_썸네일 클릭" data-vid="8Fwwbh94r9U" event-order="4" event-description="블랙워크의 Mk12 손잡이 리뷰">
+                            <span class="thumb_wrap">
+                                <img class="thumb_g" src="https://t1.kakaocdn.net/gamepub/pub-img/pubg/video_tip/video_tip_1645599849967_27.jpg" alt="">
+                            </span>
+                            <span class="title_vod">
+                                <span class="txt">블랙워크의 Mk12 손잡이 리뷰</span>
+                                <span class="bg"></span>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a name="a_vod_item" class="link_vod" href="javascript:void(0)" event-category="영상팁" event-name="영상팁_썸네일 클릭" data-vid="BidZ2H_5d7A" event-order="5" event-description="핫스의 솔로 플레이 강의">
+                            <span class="thumb_wrap">
+                                <img class="thumb_g" src="https://t1.kakaocdn.net/gamepub/pub-img/pubg/video_tip/video_tip_1645599872451_14.jpg" alt="">
+                            </span>
+                            <span class="title_vod">
+                                <span class="txt">핫스의 솔로 플레이 강의</span>
+                                <span class="bg"></span>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="lst">
+                        <a name="a_vod_item" class="link_vod" href="javascript:void(0)" event-category="영상팁" event-name="영상팁_썸네일 클릭" data-vid="wiNw3MdV7-Y" event-order="6" event-description="윤루트의 엠포 상향 체험기">
+                            <span class="thumb_wrap">
+                                <img class="thumb_g" src="https://t1.kakaocdn.net/gamepub/pub-img/pubg/video_tip/video_tip_1645064956668_97.jpg" alt="">
+                            </span>
+                            <span class="title_vod">
+                                <span class="txt">윤루트의 엠포 상향 체험기</span>
+                                <span class="bg"></span>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="lst">
+                        <a name="a_vod_item" class="link_vod" href="javascript:void(0)" event-category="영상팁" event-name="영상팁_썸네일 클릭" data-vid="Hgr7DW54bX8" event-order="7" event-description="배린이 가이드 4. 방어구와 회복 아이템">
+                            <span class="thumb_wrap">
+                                <img class="thumb_g" src="https://t1.kakaocdn.net/gamepub/pub-img/pubg/video_tip/video_tip_1644305333422_45.jpg" alt="">
+                            </span>
+                            <span class="title_vod">
+                                <span class="txt">배린이 가이드 4. 방어구와 회복 아이템</span>
+                                <span class="bg"></span>
+                            </span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li>
+                <h1>slide 2</h1>
+            </li>
+        </ul>
+    </section>
+</div>
+
+

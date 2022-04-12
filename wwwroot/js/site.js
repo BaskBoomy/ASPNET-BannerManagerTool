@@ -69,3 +69,10 @@ $(function () {
 
 
 
+$(document).on('show.bs.modal', '.modal', function () {
+    $("body").css("padding-right", "0");
+});
+
+$(document).on('hide.bs.modal', '.modal', function () {
+    $("body").css("padding-right", "0");
+});

@@ -591,3 +591,124 @@ img {
         background-position: -5.791rem -12.75rem;
     }
 }
+/*베너 5*/
+.banner-box {
+    position: relative;
+    overflow: hidden;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 54px;
+}
+.title-box{
+    display:block;
+}
+.banner-title{
+    display:inline-block;
+}
+.slide-video {
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    margin-top:20px;
+}
+.clicked-video {
+    overflow: hidden;
+    position: absolute;
+    width: 53%;
+}
+.slide-video-list {
+    overflow: hidden;
+    float: right;
+    width: calc(47%);
+    max-height: 503px;
+}
+.paginator {
+    position: relative;
+    float: right;
+}
+li {
+    position: relative;
+    float: left;
+    margin-left: 20px;
+}
+.prev {
+    display: block;
+    height: 20px;
+    width: 20px;
+    background: url('../assets/arrow-left-solid.svg') no-repeat;
+}
+
+.next {
+    display: block;
+    height: 20px;
+    width: 20px;
+    background: url('../assets/arrow-right-solid.svg') no-repeat;
+}
+.slick-slider {
+    padding-left: 0;
+    margin-top: 0;
+}
+.slide-video .clicked-video .link_vod {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    outline: 0;
+}
+.slide-video .clicked-video .link_vod .thumb_wrap {
+    overflow: hidden;
+    display: block;
+    position: relative;
+    /*padding-bottom: 56.25%;*/
+    transform: rotate(-0.01deg);
+}
+.slide-video .clicked-video .link_vod .thumb_wrap:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    background-color: rgba(0,0,0,.4);
+    content: '';
+}
+.thumb_g {
+    width: 100%;
+    vertical-align: top;
+}
+.slide-video .clicked-video .link_vod .title_vod {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 52px;
+    background: #000 url(https://t1.kakaocdn.net/gamepub/pub/battlegrounds/images/bg-thumb-video-210830.png) 19px top no-repeat;
+    z-index: 20;
+}
+.slide-video .clicked-video .link_vod .title_vod .txt {
+    overflow: hidden;
+    display: block;
+    position: relative;
+    height: 100%;
+    margin-left: 59px;
+    color: #b3b3b3;
+    font-size: 15px;
+    line-height: 52px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    z-index: 5;
+}
+.slide-video .list_battleVod {
+    overflow: hidden;
+    margin-left: 20px;
+}
+.slide-video .list_battleVod li:nth-of-type(odd) {
+    padding-right: 10px;
+}
+.slide-video .list_battleVod li {
+    overflow: hidden;
+    float: left;
+    box-sizing: border-box;
+    width: 50%;
+    height: 50%;
+    padding-bottom: 10px;
+}

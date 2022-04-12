@@ -11940,3 +11940,8 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
         margin-left: -15rem;
     }
 }
+
+.modal-open {
+    overflow: auto;
+    padding-right: 0 !important;
+}

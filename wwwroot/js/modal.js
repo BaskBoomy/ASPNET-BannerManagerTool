@@ -18,14 +18,19 @@ $(function () {
         var url = $(this).data('url');
         var decodeUrl = decodeURIComponent(url);
         $.get(decodeUrl).done(function (data) {
-            PlaceHolderElement.html(data);
             $('.modal').modal('hide');
             $('body').removeClass('modal-open');
             $('.modal-backdrop').remove();
+            PlaceHolderElement.html(data);
             PlaceHolderElement.find('.modal').modal('show');
         })
     })
-    
+
+    var myModalEl = document.getElementById('selectTemplateModal')
+    myModalEl.addEventListener('hidden.bs.modal', function (event) {
+        PlaceHolderElement.html("");
+        window.location.reload();
+    })
 })
 /*
  * [템플릿 데이터 입력 기능]
@@ -37,11 +42,12 @@ Array.prototype.forEach.call(ids, function (el, i) {
     if (arr[0] === 'data') {
         dataId = el.id;
         if (arr[1] === 'text') {
-            $('#' + dataId).keydown(function () {
+            $('#' + dataId).keyup(function () {
+                console.log(arr[2]);
                 $('#' + arr[2]).html($(this).val());
             })
         } else if (arr[1] === 'videourl') {
-            $('#' + dataId).keydown(function () {
+            $('#' + dataId).keyup(function () {
                 var video = document.getElementById("videoTag");
                 var mp4source = document.getElementById("mp4Src");
                 var webmsource = document.getElementById("webmSrc");
@@ -56,25 +62,25 @@ Array.prototype.forEach.call(ids, function (el, i) {
             //arr[2] :  pc(pc해상도),m(모바일 해상도)
             //console.log(dataId);
             if (arr[2] === "pc") {
-                $('#' + dataId).keydown(function () {
+                $('#' + dataId).keyup(function () {
                     document.getElementById(arr[3]).style.backgroundImage = "url(" + $(this).val() + ")";
                 })
             } else if (arr[2] === "m") {
-                $('#' + dataId).keydown(function () {
+                $('#' + dataId).keyup(function () {
                     document.getElementById(arr[3]).src = $(this).val();
                 })
             } else {
-                $('#' + dataId).keydown(function () {
+                $('#' + dataId).keyup(function () {
                     document.getElementById(arr[2]).style.backgroundImage = "url(" + $(this).val() + ")";
                 })
             }
             
         } else if (arr[1] === 'btnlink') {
-            $('#' + dataId).keydown(function () {
+            $('#' + dataId).keyup(function () {
                 document.getElementById(arr[2]).href = $(this).val();
             })
         } else if (arr[1] === 'imagelink') {
-            $('#' + dataId).keydown(function () {
+            $('#' + dataId).keyup(function () {
                 document.getElementById(arr[2]).href = $(this).val();
             })
         }
@@ -129,24 +135,97 @@ function tpSubmit() {
 }
 
 /*
- * [Checkbox를 활용한 Delete 기능]
+ * [Checkbox를 활용한 Edit, Delete 기능]
  */
 $(document).ready(function () {
-    var deleteBtn_1 = document.getElementById('deleteBtn_1');
-    var editBtn_1 = document.getElementById('editBtn_1');
-
     $('input:checkbox[name="checkBoxAll"]').change(function () {
-        $('input:checkbox[name="checkBoxAll"]').each(function () {
-            var pageId = this.value;
-            if (this.checked) {
-                deleteBtn_1.style.display = "block";
-                $('.chkCheckBoxId_' + pageId).prop('checked', true);
-            } else {
-                deleteBtn_1.style.display = "none";
-                $('.chkCheckBoxId_' + pageId).prop('checked', false);
+        var pageId = this.value;
+        if ($(this).is(":checked")) {
+            $('.chkCheckBoxId_' + pageId).prop('checked', true);
+            document.getElementById('deleteBtn_' + pageId).style.display = "block";
+        } else {
+            $('.chkCheckBoxId_' + pageId).prop('checked', false);
+            document.getElementById('deleteBtn_' + pageId).style.display = "none";
+        }
+    });
+
+    $('input:checkbox[name="bannerId"]').change(function () {
+        var val = this.value;
+        var bannerId = val.split(',')[0];
+        var pageId = val.split(',')[1];
+        if ($("input:checkbox[class=chkCheckBoxId_"+pageId+"]:checked").length > 0) {
+            document.getElementById('deleteBtn_' + pageId).style.display = "block";
+            document.getElementById('editBtn_' + pageId).style.display = "block";
+            if ($("input:checkbox[class=chkCheckBoxId_" + pageId + "]:checked").length >= 2) {
+                document.getElementById('editBtn_' + pageId).style.display = "none";
             }
-        })
-    })
+            else {
+                $("input:checkbox[class=chkCheckBoxId_" + pageId + "]:checked").each(function () {
+                    if (this.checked) {
+                        document.getElementById('editBtn_' + pageId).setAttribute("data-url", "/Home/EditBanner/" + bannerId);
+                    }
+                })
+            }
+        } else {
+            document.getElementById('deleteBtn_' + pageId).style.display = "none";
+            document.getElementById('editBtn_' + pageId).style.display = "none";
+        }
+
+
+
+        
+    });
+
+    //$('input:checkbox[name="bannerId"]').change(function () {
+    //    if ($('input:checkbox[name="bannerId"]:checked').length > 0) {
+    //        deleteBtn_1.style.display = "block";
+    //        editBtn_1.style.display = "block";
+
+    //        if ($('input:checkbox[name="bannerId"]:checked').length >= 2) {
+    //            editBtn_1.style.display = "none";
+    //        }
+    //        else {
+    //            $('input:checkbox[name="bannerId"]:checked').each(function () {
+    //                if (this.checked) {
+    //                    editBtn_1.setAttribute("data-url", "/Home/EditBanner/" + this.value);
+    //                }
+    //            })
+    //        }
+    //    } else {
+    //        deleteBtn_1.style.display = "none";
+    //        editBtn_1.style.display = "none";
+    //    }
+    //})
+
+
+
+
+
+
+
+
+
+
+
+
+    //$('input:checkbox[name="checkBoxAll"]').change(function () {
+    //    var pageId = this.value;
+        
+    //    $('input:checkbox[name="checkBoxAll"]').each(function () {
+            
+            
+    //        if ($(this).is(":checked")) {
+    //            console.log(pageId);
+    //            $('.chkCheckBoxId_' + pageId).prop('checked', true);
+    //            document.getElementById('deleteBtn_'+pageId).style.display = "block";
+    //            return false;
+    //        } else {
+    //            $('.chkCheckBoxId_' + pageId).prop('checked', false);
+    //            document.getElementById('deleteBtn_' + pageId).style.display = "none";
+    //            return false;
+    //        }
+    //    })
+    //})
 
    
     //var pageId = 1;
@@ -162,25 +241,7 @@ $(document).ready(function () {
         //        $('.chkCheckBoxId_' + pageId).prop('checked', false);
         //    }
         //})
-    $('input:checkbox[name="bannerId"]').change(function () {
-        if ($('input:checkbox[name="bannerId"]:checked').length > 0) {
-            deleteBtn_1.style.display = "block";
-            editBtn_1.style.display = "block";
-
-            if ($('input:checkbox[name="bannerId"]:checked').length >= 2) {
-                editBtn_1.style.display = "none";
-            } else {
-                $('input:checkbox[name="bannerId"]:checked').each(function () {
-                    if (this.checked) {
-                        editBtn_1.setAttribute("data-url", "/Home/EditBanner/" + this.value);
-                    }
-                })
-            }
-        } else {
-            deleteBtn_1.style.display = "none";
-            editBtn_1.style.display = "none";
-        }
-    })
+    
 
 
         

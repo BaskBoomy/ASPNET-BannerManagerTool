@@ -15,7 +15,15 @@ namespace WebToolManager.Controllers
 
         public IActionResult Main()
         {
-            var bannerList = _db.UploadedBannerLists.ToList().OrderBy(x => x.RowNo);
+            var bannerList = _db.UploadedBannerLists.Where(x=>x.Page ==1).ToList().OrderBy(x => x.RowNo);
+     
+            return View(bannerList);
+        }
+        
+        [Route("BlackDesert/GameInfo/Class")]
+        public IActionResult Class()
+        {
+            var bannerList = _db.UploadedBannerLists.Where(x=>x.Page ==2).ToList().OrderBy(x => x.RowNo);
      
             return View(bannerList);
         }

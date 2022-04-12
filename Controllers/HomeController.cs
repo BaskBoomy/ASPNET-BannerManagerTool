@@ -140,9 +140,6 @@ namespace WebToolManager.Controllers
             {
                 throw ex;
             }
-
-
-            
         }
 
         [HttpPost]
@@ -150,12 +147,21 @@ namespace WebToolManager.Controllers
         {
             string bannerIds = fc["bannerId"];
             string[] bannerId = bannerIds.Split(new char[] { ',' });
-            foreach (string id in bannerId)
+            for(int idx = 0;idx < bannerId.Length; idx++)
             {
-                var template = _db.UploadedBannerLists.Find(int.Parse(id));
-                _db.UploadedBannerLists.Remove(template);
-                _db.SaveChanges();
+                if (idx % 2 == 0)
+                {
+                    var template = _db.UploadedBannerLists.Find(int.Parse(bannerId[idx]));
+                    _db.UploadedBannerLists.Remove(template);
+                    _db.SaveChanges();
+                }
             }
+            //foreach (string id in bannerId)
+            //{
+            //    var template = _db.UploadedBannerLists.Find(int.Parse(id));
+            //    _db.UploadedBannerLists.Remove(template);
+            //    _db.SaveChanges();
+            //}
 
             return RedirectToAction("Index");
         }

@@ -38,11 +38,10 @@
                             @if (banner.Page == pageSite.Id)
                             {
                                 <tr>
-                                    <td><input type="checkbox" class="chkCheckBoxId_@pageSite.Id" value="@banner.Id"  name="bannerId"/></td>
+                                    <td><input type="checkbox" class="chkCheckBoxId_@pageSite.Id" value="@banner.Id,@pageSite.Id"  name="bannerId"/></td>
                                     <td scope="row">@banner.RowNo</td>
                                     <td>@banner.BannerName</td>
-@*                                    <td><a id="atagtest" data-toggle="ajax-modal" data-url="@Url.Action($"EditBanner/{@banner.Id}")"><img style="width: 16px;margin-left: 8px;" src=~/assets/edit.png /></a></td>
-*@                                </tr>
+                                </tr>
                             }
                         }
                     </tbody>
