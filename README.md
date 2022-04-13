@@ -28,5 +28,5 @@
   - 베너 데이터 입력
     ![InputBannerData](https://user-images.githubusercontent.com/57517612/157388806-6b0fb58f-0f7d-4d85-a289-bc67a39ac52d.png)
     
-  - 베너 순서 변경
+  - 베너 순서 변경 : Drag & Drop
     ![SwitchBanner](https://user-images.githubusercontent.com/57517612/157388809-5d7cb576-857f-44d7-8747-7b594b888202.png)
