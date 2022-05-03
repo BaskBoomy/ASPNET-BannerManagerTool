@@ -21,7 +21,6 @@ namespace WebToolManager.Controllers
             _logger = logger;
             _db = bannerManagerContext;
         }
-
         public IActionResult Index()
         {
             var tables = new TemplateViewModel
